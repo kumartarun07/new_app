@@ -3,9 +3,9 @@ import 'package:dainik_bhashkar_app/ui_helper/custom_widget.dart';
 import 'package:dainik_bhashkar_app/ui_pages/news_detail_page.dart';
 import 'package:flutter/material.dart';
 
-class NewsPage extends StatelessWidget {
+class NewsPage extends StatelessWidget
+{
   const NewsPage({super.key});
-
   @override
   Widget build(BuildContext context)
   {
@@ -24,6 +24,10 @@ class NewsPage extends StatelessWidget {
              listview1(),
              SizedBox(height: 20,),
              myCont1(mtext: AppCont.mdata[0]["Title"], mimage: AppCont.mdata[0]["Img"]),
+             SizedBox(height: 20,),
+             listview2(mtext: "भास्कर खास"),
+             SizedBox(height: 20,),
+             listview3(mtext: "बॉलीवुड",mtext2: "सभी देखें ",),
              SizedBox(height: 20,),
              listview2(mtext: "भास्कर खास"),
              SizedBox(height: 20,),
