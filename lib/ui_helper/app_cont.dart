@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppCont
 {
+  static  String News ="";
+
   static final List<String>tab=[
     "Top News",
     "Job-Education",
@@ -38,108 +40,87 @@ class AppCont
             children: [
               Icon(Icons.fire_extinguisher,color: Colors.orange,),
               SizedBox(width: 5,),
-              Text("टॉप न्यूज़")
+              Text("Top News")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.location_on,color: Colors.red,),
               SizedBox(width: 5,),
-              Text("राज्य-शहर")
+              Text("State-city")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.star,color: Colors.orangeAccent,),
               SizedBox(width: 5,),
-              Text("भास्कर खास")
-            ],
-          ),),
-          Tab(child: Row(
-            children: [
-              Icon(Icons.event,color: Colors.orangeAccent,),
-              SizedBox(width: 5,),
-              Text("हरियाणा चुनाव")
+              Text("Bhaskar Khas")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.sports_cricket,color: Colors.blue,),
               SizedBox(width: 5,),
-              Text("क्रिकेट")
+              Text("Cricket")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.fire_extinguisher,color: Colors.orangeAccent,),
               SizedBox(width: 5,),
-              Text("DB ओरिजिनल")
+              Text("Magazine")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.cast_for_education_outlined,color: Colors.black,),
               SizedBox(width: 5,),
-              Text("जॉब - एजुकेशन")
+              Text("Job-Education")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.sports,color: Colors.blue,),
               SizedBox(width: 5,),
-              Text("स्पोर्ट्स")
+              Text("Sports")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.movie,color: Colors.black,),
               SizedBox(width: 5,),
-              Text("बॉलीवुड")
+              Text("Bollywood")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.living,color: Colors.orangeAccent,),
               SizedBox(width: 5,),
-              Text("लाइफस्टाइल")
-            ],
-          ),),
-          Tab(child: Row(
-            children: [
-              Icon(Icons.fire_extinguisher),
-              SizedBox(width: 5,),
-              Text("जीवन मंत्र")
+              Text("Lifestyle")
             ],
           ),),
           Tab(child: Row(
             children: [
               Icon(Icons.woman,color: Colors.black,),
               SizedBox(width: 5,),
-              Text("वुमन")
+              Text("Women")
             ],
           ),),
           Tab(child: Row(
             children: [
-              Icon(Icons.fire_extinguisher),
+              Icon(Icons.map),
               SizedBox(width: 5,),
-              Text("देश")
+              Text("Country")
             ],
           ),),
           Tab(child: Row(
             children: [
-              Icon(Icons.fire_extinguisher),
+              Icon(Icons.business,color: Colors.orange,),
               SizedBox(width: 5,),
-              Text("विदेश")
+              Text("Business")
             ],
           ),),
-          Tab(child: Row(
-            children: [
-              Icon(Icons.fire_extinguisher),
-              SizedBox(width: 5,),
-              Text("बिजनेस")
-            ],
-          ),),
-          Tab(child: Row(
+         /* Tab(child: Row(
             children: [
               Icon(Icons.fire_extinguisher),
               SizedBox(width: 5,),
@@ -194,12 +175,11 @@ class AppCont
               SizedBox(width: 5,),
               Text("यूटिलिटी")
             ],
-          ),),
+          ),),*/
 
         ]
     );
   }
-
 
   static final List<String>search=[
     "राज्य-शहर",

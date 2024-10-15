@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget
   Widget build(BuildContext context)
   {
     return DefaultTabController(
-      length: 23,
+      length: 12,
       child: Scaffold(
         appBar: AppBar(
           leadingWidth: 120,
@@ -31,11 +31,11 @@ class HomePage extends StatelessWidget
               },
               child: Container(
                 decoration: BoxDecoration(border: Border.all(width: 2,)),
-                height: 30,width: 80,
+                height: 30,width: 100,
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Icon(Icons.newspaper),
-                    Text("ई-पेपर")
+                    Text("E-Paper")
                   ],
                 ),
               ),
@@ -53,28 +53,18 @@ class HomePage extends StatelessWidget
         body: TabBarView(
             children: [
               NewsPage(),
-              SmallNewPage(),
-              KhashPage(),
-              SmallNewPage(),
-              SmallNewPage(),
-              SmallNewPage(),
-              MediumNewsPage(),
-              NewsPage(),
-              MediumNewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
-              NewsPage(),
+              SmallNewPage(query: "Rajasthan",),
+              KhashPage(query: "DainikBhaskar",),
+              SmallNewPage(query: "Cricket",),
+              SmallNewPage(query: "Magazine",),
+              SmallNewPage(query: "Job-Education",),
+              MediumNewsPage(query: "Sports",),
+              MediumNewsPage(query: "Bollywood",),
+              MediumNewsPage(query: "LifeStyle",),
+              SmallNewPage(query: "Women",),
+              KhashPage(query: "Country",),
+              SmallNewPage(query: "Business",),
+
             ]
         ),
       ),

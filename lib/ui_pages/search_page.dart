@@ -1,28 +1,47 @@
+import 'package:dainik_bhashkar_app/bloc/search/search_event.dart';
 import 'package:dainik_bhashkar_app/ui_helper/app_cont.dart';
+import 'package:dainik_bhashkar_app/ui_helper/custom_widget.dart';
 import 'package:dainik_bhashkar_app/ui_pages/search_view_page.dart';
+import 'package:dainik_bhashkar_app/urls.dart';
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatelessWidget
+class SearchPage extends StatefulWidget
 {
-  const SearchPage({super.key});
+  @override
+  State<SearchPage> createState() => _SearchPageState();
+}
 
+class _SearchPageState extends State<SearchPage>
+{
+  TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context)
   {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
-        title: TextField(
+        title: myTextField(
+          iconButton: IconButton(onPressed: (){
+
+            if(searchController.text.isNotEmpty)
+              {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchViewPage(query: searchController.text.toString())));
+              }
+          }, icon: Icon(Icons.search,size: 30,color: Colors.black,)),
+          hintText: "विषय, शहर और राज्य खोजें", myController: searchController,)),
+        /*TextField(
         decoration: InputDecoration(
             hintText: "विषय, शहर और राज्य खोजें",
             focusedBorder: OutlineInputBorder(),
             border: InputBorder.none,
-            prefixIcon: Icon(Icons.search,size: 25,),
+            prefixIcon: IconButton(onPressed: (){
+
+            }, icon: Icon(Icons.search,size: 25,)),
           enabledBorder: OutlineInputBorder()
         ),
-      ),),
+      ),),*/
       body: Container(
-        //margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.all(15.00),
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
             itemCount: AppCont.search.length,
@@ -31,9 +50,9 @@ class SearchPage extends StatelessWidget
                 children: [
                   InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchViewPage(index: index,)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchViewPage(query: searchController.text.toString())));
                       },
-                      child: Text("   ${AppCont.search[index]}",style: TextStyle(fontSize: 20),)),
+                      child: Text("${AppCont.search[index]}",style: TextStyle(fontSize: 20),)),
                   Divider(thickness: 1,)
                 ],
               );

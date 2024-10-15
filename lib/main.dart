@@ -1,14 +1,19 @@
+import 'package:dainik_bhashkar_app/bloc/news_bloc.dart';
+import 'package:dainik_bhashkar_app/bloc/search/search_bloc.dart';
+import 'package:dainik_bhashkar_app/model/api_helper.dart';
 import 'package:dainik_bhashkar_app/provider_page.dart';
-import 'package:dainik_bhashkar_app/ui_pages/khash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'ui_pages/newsBottom_page.dart';
 
 void main()
 {
-  runApp(
-    ChangeNotifierProvider(create: (context)=>ProviderPage(),child: MyApp(),)
-  );
+  runApp(MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context)=>ProviderPage()),
+    BlocProvider(create: (context)=>NewsBloc(apiHelper: ApiHelper())),
+    BlocProvider(create: (context)=>SearchBloc(apiHelper: ApiHelper()))
+  ],child: MyApp(),),);
 }
 
 class MyApp extends StatelessWidget

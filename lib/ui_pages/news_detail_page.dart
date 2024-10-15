@@ -1,13 +1,15 @@
-import 'package:dainik_bhashkar_app/ui_helper/app_cont.dart';
-import 'package:dainik_bhashkar_app/ui_helper/custom_widget.dart';
+import 'package:dainik_bhashkar_app/bloc/news_bloc.dart';
+import 'package:dainik_bhashkar_app/bloc/news_state.dart';
+import 'package:dainik_bhashkar_app/bloc/search/search_bloc.dart';
+import 'package:dainik_bhashkar_app/bloc/search/search_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewsDetailPage extends StatelessWidget
 {
-int mindex;
-String ntext;
-var nImgurl;
-NewsDetailPage({ this.mindex=-1,this.ntext="",this.nImgurl=""});
+  int mindex;
+  bool isUpdate;
+  NewsDetailPage({ required this.mindex,this.isUpdate=false});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,21 +21,111 @@ NewsDetailPage({ this.mindex=-1,this.ntext="",this.nImgurl=""});
         ],
       ),
 
-      body:mindex<=-1? Column(
-        children: [
-          Text(ntext),
-          Image.asset(nImgurl)
-        ],
-      ):Column(
-          children: [
-            Text(AppCont.mdata[mindex]['Title']),
-            Image.asset(AppCont.mdata[mindex]['Img']),
-            Text(AppCont.mdata[mindex]['Title']),
-          ],
-        )
+      body:isUpdate?BlocBuilder<NewsBloc,NewsState>(builder: (_,state){
+        if(state is NewsLoadingState){
+          return Center(child: CircularProgressIndicator(),);
+        }
+        else if(state is NewsErrorState){
+          return Center(child: Text(state.errorMsg),);
+        }
+        else if(state is NewsLoadedState)
+        {
+          var Data = state.articalDataModel.articles![mindex];
+
+          return SingleChildScrollView(
+
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Text(Data.title??"No data Found"),
+                  SizedBox(height: 10,),
+                  Text(Data.publishedAt??"No data Found"),
+                  SizedBox(height: 10,),
+                  Image.network("${Data.urlToImage??Container()}"),
+                  SizedBox(height: 10,),
+                  FittedBox(
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: Text("${Data.content??"No Data Found"}")),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+        return Container();
+      }):
+      BlocBuilder<SearchBloc,SearchState>(builder: (_,state){
+        if(state is SearchLoadingState){
+          return Center(child: CircularProgressIndicator(),);
+        }
+        else if(state is SearchErrorState){
+          return Center(child: Text(state.ErrorMsg),);
+        }
+        else if(state is SearchLoadedState)
+        {
+          var Data = state.articalDataModel.articles![mindex];
+
+          return SingleChildScrollView(
+
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Text(Data.title??"No data Found"),
+                  SizedBox(height: 10,),
+                  Text(Data.publishedAt??"No data Found"),
+                  SizedBox(height: 10,),
+                  Image.network("${Data.urlToImage??Container()}"),
+                  SizedBox(height: 10,),
+                  FittedBox(
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: Text("${Data.content??"No Data Found"}")),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+        return Container();
+      }),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 SingleChildScrollView(
 child: ListView.builder(
@@ -119,10 +211,4 @@ Text("शेयर"),
                   maxLines: null,
                   textAlign: TextAlign.justify,),
                 SizedBox(height: 10,),
-                listview3(mtext: "ख़बरें और भी हैं...",)*//*
-
-
-],
-);
-} ),
-),*/
+                listview3(mtext: "ख़बरें और भी हैं...",)*/

@@ -26,9 +26,9 @@ class _NewsBottomPageState extends State<NewsBottomPage>
       body: pages[SelectedIndex],
       bottomNavigationBar: NavigationBar(
           destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: "होम",),
-            NavigationDestination(icon: Icon(Icons.play_circle_outline), label: "वीडीओ"),
-            NavigationDestination(icon: Icon(Icons.search), label: "सर्च"),
+            NavigationDestination(icon: Icon(Icons.home), label: "Home",),
+            NavigationDestination(icon: Icon(Icons.play_circle_outline), label: "Video"),
+            NavigationDestination(icon: Icon(Icons.search), label: "Search"),
           ],
         onDestinationSelected: (Value){
             SelectedIndex=Value;
