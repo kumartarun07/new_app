@@ -22,5 +22,11 @@ class ProviderPage extends ChangeNotifier
 
     getThemeValue()=>isDark;
 
+  int selectedIndex=0;
+  void updatePage(int index){
+    selectedIndex =index;
+    notifyListeners();
+  }
+  int getPage()=>selectedIndex;
 
 }

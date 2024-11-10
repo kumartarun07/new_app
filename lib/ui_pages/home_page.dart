@@ -1,4 +1,5 @@
 import 'package:dainik_bhashkar_app/ui_helper/app_cont.dart';
+import 'package:dainik_bhashkar_app/ui_helper/custom_widget.dart';
 import 'package:dainik_bhashkar_app/ui_pages/account_page.dart';
 import 'package:dainik_bhashkar_app/ui_pages/e_paper_page.dart';
 import 'package:dainik_bhashkar_app/ui_pages/khash_page.dart';
@@ -8,10 +9,16 @@ import 'package:dainik_bhashkar_app/ui_pages/notification_page.dart';
 import 'package:dainik_bhashkar_app/ui_pages/small_new_page.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget
+class HomePage extends StatefulWidget
 {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
+{
   @override
   Widget build(BuildContext context)
   {
@@ -19,10 +26,10 @@ class HomePage extends StatelessWidget
       length: 12,
       child: Scaffold(
         appBar: AppBar(
-          leadingWidth: 120,
+          leadingWidth: 150,
           leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Image.asset("assets/img/db2.png",color: Theme.of(context).brightness==Brightness.dark?Colors.white:Colors.black,),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
+            child: Text("News App",style:myTextStyle20()),
           ),
           actions: [
             InkWell(

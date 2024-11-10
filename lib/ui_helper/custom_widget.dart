@@ -1,5 +1,6 @@
 import 'package:dainik_bhashkar_app/bloc/news_bloc.dart';
 import 'package:dainik_bhashkar_app/bloc/news_state.dart';
+import 'package:dainik_bhashkar_app/provider_page.dart';
 import 'package:dainik_bhashkar_app/ui_pages/news_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -215,7 +216,7 @@ class listview2 extends StatelessWidget
                 style: ButtonStyle(shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)))),
                 onPressed: (){
-
+                  //context.read<ProviderPage>().updatePage(5);
                 }, child: Text("See all",style: myTextStyle20(),))
           ],
         ),
