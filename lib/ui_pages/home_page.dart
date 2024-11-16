@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             children: [
               NewsPage(),
               SmallNewPage(query: "Rajasthan",),
-              KhashPage(query: "DainikBhaskar",),
+              KhashPage(query: "Dainik-Bhaskar",),
               SmallNewPage(query: "Cricket",),
               SmallNewPage(query: "Magazine",),
               SmallNewPage(query: "Job-Education",),

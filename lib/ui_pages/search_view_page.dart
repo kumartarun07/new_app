@@ -36,7 +36,7 @@ class _SearchViewPageState extends State<SearchViewPage>
             if(state is SearchLoadingState){
               return Center(child: CircularProgressIndicator(),);
             }else if(state is SearchErrorState){
-              return Center(child: Lottie.asset("assets/lottie/network.json"),);
+              return Center(child: Lottie.asset("assets/lottie/network.json",),);
             }else if(state is SearchLoadedState){
               var Data = state.articalDataModel.articles;
               return  ListView.builder(

@@ -1,5 +1,4 @@
 import 'package:dainik_bhashkar_app/provider_page.dart';
-import 'package:dainik_bhashkar_app/ui_helper/app_cont.dart';
 import 'package:dainik_bhashkar_app/ui_helper/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,117 +14,56 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("प्रोफ़ाइल"),),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListTile(
-              leading: CircleAvatar(
-                maxRadius: 35,
-                backgroundImage: AssetImage(AppCont.mdata[0]["Img"]),),
-              title: Text("Tarun Malviya",style: myTextStyle20(),),
-              subtitle: Text("+919058339922"),
-              trailing: IconButton(onPressed: (){}, icon: Icon(Icons.edit_note,size: 35,)),
-            ),
-            Divider(thickness: 2),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("दैनिक भास्कर प्रीमियम",style: myTextStyle15(myWeight: FontWeight.bold),),
-                      Icon(Icons.workspace_premium)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("ई पेपर",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.newspaper)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("अपना राज्य और शहर चुनें",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.location_on_outlined)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("मेरा पसंदीदा विषय",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.favorite_border_outlined)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("सेव",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.save)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("नोटीफेकैसन्स",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.notifications)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("डार्क मोड",style: myTextStyle15(myWeight: FontWeight.bold)),
-                     Switch.adaptive(value:context.watch<ProviderPage>().getThemeValue(),
-                         onChanged:(value){
-                       context.read<ProviderPage>().setThemeValue(value);
-                     }),
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("आलेख फ़ॉन्ट आकार",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.font_download_sharp)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("ऐप साझा करें",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.share)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("ऐप को रेटिंग दें",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.star_outline)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("प्रतिक्रिया दें",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.feedback)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("लॉग आउट",style: myTextStyle15(myWeight: FontWeight.bold)),
-                      Icon(Icons.logout)
-                    ],
-                  ),
-                  Divider(thickness: 2),
-                ],
+      appBar: AppBar(
+        title: Text("Profile",style: myTextStyle25(myWeight: FontWeight.bold),),),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: ListView(
+          shrinkWrap: true,
+          children:[ Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              myRow(mText: "908978654538", mIcon: Icon(Icons.edit_note,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Dainik Bhaskar Premium", mIcon:Icon(Icons.workspace_premium,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "E-Paper", mIcon:Icon(Icons.newspaper,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Select your state and city", mIcon: Icon(Icons.location_on_outlined,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "My favorite subject", mIcon: Icon(Icons.favorite_border_outlined,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Save", mIcon:Icon(Icons.save,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Notifications", mIcon: Icon(Icons.notifications,size: 30,)),
+              Divider(thickness: 2),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0,top: 15,bottom: 15,right: 10),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Dark Mode",style: myTextStyle20(myWeight: FontWeight.bold)),
+                   Switch.adaptive(value:context.watch<ProviderPage>().getThemeValue(),
+                       onChanged:(value){
+                     context.read<ProviderPage>().setThemeValue(value);
+                   }),
+                  ],
+                ),
               ),
-
-            )
-          ],
+              Divider(thickness: 2),
+              myRow(mText: "Article font size", mIcon: Icon(Icons.font_download_sharp,size: 30,),),
+              Divider(thickness: 2),
+              myRow(mText: "share app",mIcon: Icon(Icons.share,size: 30,),),
+              Divider(thickness: 2),
+              myRow(mText: "Rate the app",mIcon: Icon(Icons.star_outline,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Give feedback",mIcon: Icon(Icons.feedback,size: 30,)),
+              Divider(thickness: 2),
+              myRow(mText: "Logout",mIcon: Icon(Icons.logout,size: 30,) ),
+              Divider(thickness: 2),
+            ],
+          )],
         ),
+
       ),
     );
   }

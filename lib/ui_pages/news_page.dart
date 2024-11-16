@@ -42,7 +42,7 @@ class _NewsPageState extends State<NewsPage>
              return Center(child: CircularProgressIndicator(),);
            }
         else if(state is NewsErrorState){
-           return Center(child: Lottie.asset("assets/lottie/network.json"),);
+           return Center(child: state.errorMsg.isNotEmpty?Text(state.errorMsg):Lottie.asset("assets/lottie/network.json"),);
          }
         else if(state is NewsLoadedState)
            {

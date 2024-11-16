@@ -1,6 +1,5 @@
 import 'package:dainik_bhashkar_app/bloc/news_bloc.dart';
 import 'package:dainik_bhashkar_app/bloc/news_state.dart';
-import 'package:dainik_bhashkar_app/provider_page.dart';
 import 'package:dainik_bhashkar_app/ui_pages/news_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +19,6 @@ class myButton extends StatelessWidget
       style: ElevatedButton.styleFrom(
         backgroundColor: bgColor,
         minimumSize: Size(mwidth,mheight ),
-
       ),
       onPressed: callback, child:myIcon!=null? Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +133,7 @@ class listview1 extends StatelessWidget
       children: [
       InkWell(
       onTap: (){
-      Navigator.push(context,MaterialPageRoute(builder: (context) => NewsDetailPage(mindex: index,),));
+      Navigator.push(context,MaterialPageRoute(builder: (context) => NewsDetailPage(mindex: index,isUpdate: true,),));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -363,6 +361,14 @@ class listview3 extends StatelessWidget
 }
 
 
+   myTextStyle25({FontWeight myWeight =FontWeight.normal})
+   {
+  return TextStyle(
+    fontSize: 25,
+    fontWeight: myWeight,
+    // decoration: TextDecoration.underline,
+  );
+}
    myTextStyle20({FontWeight myWeight =FontWeight.normal})
    {
   return TextStyle(
@@ -371,8 +377,6 @@ class listview3 extends StatelessWidget
     // decoration: TextDecoration.underline,
   );
 }
-
-
 
    myTextStyle15({FontWeight myWeight =FontWeight.normal})
    {
@@ -400,3 +404,15 @@ class listview3 extends StatelessWidget
     // decoration: TextDecoration.underline,
   );
 }
+
+    myRow({required String mText,Icon? mIcon}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(mText,style: myTextStyle20(myWeight: FontWeight.bold),),
+          mIcon!
+        ],),
+    );
+    }
